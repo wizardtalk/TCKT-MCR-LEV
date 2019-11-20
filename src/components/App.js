@@ -41,10 +41,10 @@ class App extends React.Component {
   color2: '#DF4545',
   color3: '#6C9595',
   menuVisibility: 'none',
-  startStation1: 'Macclesf',
-  startStation2: 'ield',
+  startStation1: 'Manchester Piccadilly',
+  startStation2: '',
   startStation3: '',
-  destinationStation1: 'Stoke On Trent', 
+  destinationStation1: 'Levenshulme', 
   destinationStation2: '', 
   destinationStation3: '', 
   amPm: '', // FORMAT 'a.m.' or 'p.m.'
@@ -53,7 +53,7 @@ class App extends React.Component {
   endTime: '',
   timePurchased: '',
   activatedTime: '',
-  ticketPrice: '9.60',
+  ticketPrice: '3.00',
   ticketType: 'Anytime Day Single',
   dayShortFormat: '', // FORMAT 'Mon', 'Tue', 'Wed', Thu', 'Fri', 'Sat', 'Sun'
   dayDate: '',
@@ -169,6 +169,13 @@ color3 = (event) => { this.setState({ color3: event.target.value }) }
 
  ticketIdNo = (event) => { this.setState({ ticketIdNo: event.target.value }) }
 
+ clickStartTime = ({startTime, endTime}) => {
+  this.setState({ 
+    startTime: startTime,
+    endTime: endTime
+  })
+ }
+
  startTime = (event) => { 
   let hour = event.target.value.split('')[0] + event.target.value.split('')[1];
   let minutes = event.target.value.split('')[2] + event.target.value.split('')[3];
@@ -200,17 +207,9 @@ color3 = (event) => { this.setState({ color3: event.target.value }) }
    }
 
   actTim = actTimHour + ':' + actTimMins;
-  
-  
-  
-  
-
-  
   this.setState({ startTime: colonized })
   this.setState({ timePurchased: timPur })
   this.setState({ activatedTime: actTim })
-  
-  
 }
 
  endTime = (event) => { 
@@ -455,7 +454,40 @@ saySth = () => {
           padding: '0', fontFamily: 'qanelas_soft_demomedium', fontSize: '20px', fontWeight: '900', color: '#54C0A8'}}>Ticket active</p></div>
           
           <div class="dropdown-content" style={{display: this.state.menuVisibility}}>
-        
+        <div>
+          <button onClick={() => this.clickStartTime({startTime: '17:24', endTime: '17:30'})}>17:24</button>
+        </div>
+
+        <div>
+          <button onClick={() => this.clickStartTime({startTime: '17:38', endTime: '17:44'})}>17:38</button>
+        </div>
+
+        <div>
+          <button onClick={() => this.clickStartTime({startTime: '17:47', endTime: '17:55'})}>17:47</button>
+        </div>
+
+        <div>
+          <button onClick={() => this.clickStartTime({startTime: '18:01', endTime: '18:07'})}>18:01</button>
+        </div>
+
+        <div>
+          <button onClick={() => this.clickStartTime({startTime: '18:24', endTime: '18:30'})}>18:24</button>
+        </div>
+
+        <div>
+          <button onClick={() => this.clickStartTime({startTime: '18:37', endTime: '18:44'})}>18:37</button>
+        </div>
+
+        <div>
+          <button onClick={() => this.clickStartTime({startTime: '18:47', endTime: '18:55'})}>18:47</button>
+        </div>
+
+        <div>
+          <button onClick={() => this.clickStartTime({startTime: '19:01', endTime: '19:07'})}>19:01</button>
+        </div>
+
+
+
         <div>
           <input type="text" style={{width: '300px', height: '50px', fontSize: '20px', backgroundColor: '#EEBCBA'}} onBlur={this.startTime.bind(this)} placeholder="startTime in 24hr (eg. '1815')"/>
         </div>
